@@ -1,0 +1,98 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='description' content='Mailsploit is a collection of bugs in email clients that allow effective sender spoofing and code injection attacks.')
+		meta(name='keywords' content='mailsploit, attack, exploit, injection, code, mail, email, emails, mta, mtas, spoofing, xss, bugs')
+		meta(name='author' content='Sabri Haddouche (@pwnsdx)')
+		meta(name='robots' content='index, follow')
+		meta(name='revisit-after' content='7 days')
+		title Mailsploit
+	body
+		header
+			div
+				a(href='/')
+					img(src=require('./assets/images/Logo@2x.png') width="404" height="98" alt="Mailsploit")
+
+		article.main.markdown-body
+			section.box
+				div
+					include:markdown-custom article/1-tldr.md
+					p
+						a.demo(href='#demo') Just take me to the demo &#8595;
+
+			section
+				include:markdown-custom article/2-background.md
+				div.gif
+					div
+						<iframe src="https://giphy.com/embed/xsF1FSDbjguis" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+			section
+				include:markdown-custom article/3-introduction.md
+
+			section
+				include:markdown-custom article/4-dkim.md
+
+			section.box
+				div.offline
+					div.inner
+						img(src=require('./assets/images/offline@2x.png') width="40" height="26")
+						h4 The demo is no longer available.
+						p However, source code has been released so you may run your own server locally.&nbsp;
+							a(href="https://github.com/pwnsdx/Mailsploit" target="_blank" rel="noreferrer nofollow") Go on GitHub
+				div.inner
+					span.message.rate-limit You have been rate limited. Please try again in a few minutes.
+					span.message.error An unknown error happened. Please try again.
+					span.message.connectivity-error A connectivity error happened. Please try again.
+					span.message.success Thank you. It's on its way!
+
+					a(name='demo')
+					div.demo
+						h4 Try the demo
+						form#demo-form(action=self.htmlWebpackPlugin.options.formUrl method='POST')
+							label.d(for='receiver') Your email address
+								input#receiver(type='email' name='receiver' autocomplete='off' required placeholder='john@doe.com')
+							label.d(for='sender') Email address that should appear as the sender
+								input#sender(type='email' name='sender' value='potus@whitehouse.gov' autocomplete='off' required)
+							label.d(for='options') Payloads
+								aside.select
+									select#options(name='options' required)
+										option(value='' selected) Please select a payload...
+										option(value='0') macOS ≤ 10.13.1 / iOS ≤ 11.2 Mail.app / Open-Xchange &lt; 7.10.0 / CloudMagic Newton ≤ 9.8.79-like (via spoof\0(spoof)@domain)
+										option(value='1') Mozilla-Thunderbird ≤ 52.5.0-like (via spoof\n\0 &lt;spoof\n\0@domain&gt;)
+										option(value='2') Variation #1 (Compatible with multiple clients) (via spoof\0\n@domain)
+										option(value='3') Variation #2 (Compatible with Mail for Windows 10) (via spoof" &lt;spoof&gt;\0\n &lt;user@domain&gt;)
+										option(value='4') Variation #2.1 (via spoof\0\n &lt;user@domain&gt;)
+										option(value='5') Variation #2.2 (via test" &lt;spoof&gt;\0\n &lt;user@domain&gt;)
+										option(value='6') Variation #3 (via "spoof" &lt;spoof&gt;\n\0\0\0 &lt;user@domain&gt;)
+										option(value='7') Variation #3.1 (via "test" &lt;spoof&gt;\n\0\0\0 &lt;user@domain&gt;)
+										option(value='8') Variation #3.2 (via "spoof" &lt;test&gt;\n\0\0\0 &lt;user@domain&gt;)
+										option(value='9') Variation #4 (via spoof\n\0@domain)
+										option(value='10') Variation #5 (via spoof &lt;user@domain&gt;)
+										option(value='11') Variation #6 (via spoof(spoof@domain)
+										option(value='12') Generic Test #1
+										option(value='13') Generic Test #2
+										option(value='-1') All of them (14 emails)
+
+							button(type='submit') Send
+						p.detail Emails are not stored. Please do not send emails to someone else without their consent.
+
+			section
+				include:markdown-custom article/5-responsible-disclosure.md
+
+			section
+				include:markdown-custom article/6-solutions.md
+
+			section
+				include:markdown-custom article/7-one-more-thing.md
+
+			section.about.box
+				div.inner
+					h3 About the researcher
+					//img(src=require('./assets/images/Avatar@2x.png'))
+					div
+						include:markdown-custom article/8-about-the-researcher.md
+					div
+						include:markdown-custom article/9-thanks.md

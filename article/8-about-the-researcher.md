@@ -1,0 +1,3 @@
+My name is Sabri Haddouche. I am a developer, pentester, bug hunter & privacy advocate. During the day I work at [Wire](https://wire.com) as part of the security team, and in my free time I dabble with projects like Mailsploit and [Unsecure](https://github.com/pwnsdx/Unsecure).
+
+You can contact me on [Wire](https://wire.com) (@pwnsdx), on [Twitter](https://twitter.com/pwnsdx) or via [email](mailto:sabri@riseup.net).
